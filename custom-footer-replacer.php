@@ -9,6 +9,7 @@ Author URI: http://www.customwebsite.com.au
 License: Copyright to Custom Website
 */
 
+include('settings.php');
 
 /*
 echo 'pr: ' . customGooglePageRankChecker::getRank('customwebsite.com.au');
@@ -18,6 +19,7 @@ add_action('wp_head', 'customwebsite_frontend_scripts');
 add_action('wp_footer', 'customwebsite_footer'); 
 add_action('login_enqueue_scripts','customwebsite_wplogin_css');
 add_action('admin_head','customwebsite_admin_scripts');
+
 function customwebsite_footer(){
 	$wpurl = get_bloginfo('wpurl');
 	$url="http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
@@ -60,13 +62,14 @@ $("#custom-bar").css("position", "static");
 	echo $scripts;
 }
 
+
 function customwebsite_wplogin_css(){
 	$css = '<style type="text/css">';
 	$css .= 'h1 a{width:300px;background: url("http://www.customwebsite.com.au/logo.php") no-repeat scroll center top transparent;}';
 	$css .= '.login h1 a {width:300px;background: url("http://www.customwebsite.com.au/logo.php") no-repeat scroll center top transparent;}';
 	$css .= '</style>';
 	echo $css;
-	}
+}
 
 
 function customwebsite_admin_scripts(){
@@ -75,6 +78,8 @@ function customwebsite_admin_scripts(){
 	$css .= '</style>';
 	echo $css;
 }
+
+
 // Declare the class
 class customGooglePageRankChecker {
 	
@@ -197,4 +202,3 @@ class customGooglePageRankChecker {
 		}
 	}
 }
-?>
